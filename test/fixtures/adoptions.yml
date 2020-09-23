@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2020-09-09
+  end_date_date: MyString
+  dog_id: one
+  person_id: one
+  status: MyString
+  return_reason: MyString
+  rejection_reason: MyString
+
+two:
+  start_date: 2020-09-09
+  end_date_date: MyString
+  dog_id: two
+  person_id: two
+  status: MyString
+  return_reason: MyString
+  rejection_reason: MyString

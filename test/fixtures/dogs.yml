@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date_of_birth: 2020-09-09
+  size: one
+  is_vaccinated: false
+  is_fixed: false
+  is_male: false
+  description: MyString
+
+two:
+  name: MyString
+  date_of_birth: 2020-09-09
+  size: two
+  is_vaccinated: false
+  is_fixed: false
+  is_male: false
+  description: MyString
