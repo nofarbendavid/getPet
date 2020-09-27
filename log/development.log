@@ -406,3 +406,34 @@ Processing by DogsController#index as HTML
 Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 4908)
 
 
+Started GET "/dogs" for ::1 at 2020-09-27 18:24:47 +0300
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DogsController#index as HTML
+  Rendering dogs/index.html.erb within layouts/application
+  Rendered dogs/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 394)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 24.5ms | ActiveRecord: 0.0ms | Allocations: 8818)
+
+
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1940758314978187740)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeColumnNull (20200927160933)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (28.1ms)[0m  [1m[35mALTER TABLE "adoptions" ALTER COLUMN "start_date" SET NOT NULL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "adoptions" ALTER COLUMN "status" SET NOT NULL[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "breeds" ALTER COLUMN "breed_name" SET NOT NULL[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "images" ALTER COLUMN "image_url" SET NOT NULL[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "people" ALTER COLUMN "first_name" SET NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "people" ALTER COLUMN "last_name" SET NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "people" ALTER COLUMN "phone_number" SET NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "sizes" ALTER COLUMN "size_name" SET NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "volunteers" ALTER COLUMN "first_name" SET NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "volunteers" ALTER COLUMN "last_name" SET NOT NULL[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "volunteers" ALTER COLUMN "phone_number" SET NOT NULL[0m
+  [1m[35m (1.0ms)[0m  [1m[33mUPDATE "volunteers" SET "is_active"=FALSE WHERE "is_active" IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "volunteers" ALTER COLUMN "is_active" SET NOT NULL[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200927160933"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (25.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1940758314978187740)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
