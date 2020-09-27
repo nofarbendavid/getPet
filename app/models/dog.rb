@@ -3,4 +3,6 @@ class Dog < ApplicationRecord
   has_and_belongs_to_many :breeds
   has_and_belongs_to_many :volunteers
   has_many :images
+
+  validates_presence_of :name ,:is_vaccinated, :is_fixed, :is_male
 end

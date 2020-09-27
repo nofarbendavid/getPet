@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_213427) do
+ActiveRecord::Schema.define(version: 2020_09_27_160933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "adoptions", force: :cascade do |t|
-    t.date "start_date"
+    t.date "start_date", null: false
     t.string "end_date_date"
     t.bigint "dog_id", null: false
     t.bigint "person_id", null: false
-    t.string "status"
+    t.string "status", null: false
     t.string "return_reason"
     t.string "rejection_reason"
     t.datetime "created_at", precision: 6, null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_213427) do
   end
 
   create_table "breeds", force: :cascade do |t|
-    t.string "breed_name"
+    t.string "breed_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -68,16 +68,16 @@ ActiveRecord::Schema.define(version: 2020_09_08_213427) do
 
   create_table "images", force: :cascade do |t|
     t.bigint "dog_id", null: false
-    t.string "image_url"
+    t.string "image_url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["dog_id"], name: "index_images_on_dog_id"
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "phone_number", null: false
     t.string "email"
     t.string "address"
     t.boolean "is_banned"
@@ -87,18 +87,18 @@ ActiveRecord::Schema.define(version: 2020_09_08_213427) do
   end
 
   create_table "sizes", force: :cascade do |t|
-    t.string "size_name"
+    t.string "size_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "volunteers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "phone_number", null: false
     t.string "email"
     t.string "address"
-    t.boolean "is_active"
+    t.boolean "is_active", null: false
     t.date "date_of_birth"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
