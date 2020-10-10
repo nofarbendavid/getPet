@@ -1,18 +1,33 @@
 class DogsController < ApplicationController
   def index
-    @name = 'nofar'
+    @dogs = Dog.all
   end
 
   def new
+    @dog = Dog.new
+    @sizes = Size.all
   end
 
+
   def create
+    @dog = Dog.new(permitted_params)
+
+    if @dog.save
+      flash[:success] = @dog
+      redirect_to controller: :dogs, action: :index
+
+    else
+      flash[:error] = @dog.errors
+      redirect_to controller: :dogs, action: :new
+    end
   end
 
   def show
   end
 
   def edit
+    @dog = Dog.find(params[:id])
+    @sizes = Size.all
   end
 
   def update
@@ -20,4 +35,10 @@ class DogsController < ApplicationController
 
   def destroy
   end
+
+  private
+  def permitted_params
+    params.require(:dog).permit(:name, :date_of_birth, :size_id, :is_male, :is_fixed, :is_vaccinated, :description)
+  end
+
 end

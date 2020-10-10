@@ -1,0 +1,53 @@
+<%= form_with(model: @dog) do |form| %>
+  <div class="formSection">
+    <div class="formLabel">Name:</div>
+      <%= form.text_field(:name) %>
+  </div>
+
+  <div class="formSection">
+    <div class="formLabel">Date of birth:</div>
+    <div>
+      <%= form.date_field(:date_of_birth) %>
+    </div>
+  </div>
+
+  <div class="formSection">
+    <div class="formLabel">Size:</div>
+    <div>
+      <%= form.collection_select(:size_id, @sizes, :id, :size_name, {prompt: true})%>
+    </div>
+  </div>
+
+  <div class="formSection">
+    <div class="formLabel">Gender:</div>
+    <div>
+      <%= form.radio_button(:is_male, true) %>
+      <%= form.label(:is_male_true, "Male") %>
+      <%= form.radio_button(:is_male, false) %>
+      <%= form.label(:is_male_false, "Female") %>
+    </div>
+  </div>
+
+  <div class="formSection">
+    <div>
+      <%=form.check_box(:is_fixed) %>
+      <%= form.label(:is_fixed) %>
+    </div>
+  </div>
+
+  <div class="formSection">
+    <div>
+      <%=form.check_box(:is_vaccinated) %>
+      <%= form.label(:is_vaccinated) %>
+    </div>
+  </div>
+
+  <div class="formSection">
+    <div class="formLabel">Additional data:</div>
+    <div>
+      <%= form.text_area(:description ,rows: 5, cols: 50) %>
+    </div>
+  </div>
+
+  <%= form.submit("Submit") %>
+<% end %>
