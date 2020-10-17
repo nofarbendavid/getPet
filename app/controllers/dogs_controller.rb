@@ -37,7 +37,7 @@ class DogsController < ApplicationController
   def update
     @dog = Dog.find(params[:id])
 
-    if @dog.update(permitted_params)
+    if @dog.update!(permitted_params)
       flash[:success] = @dog
       redirect_to controller: :dogs, action: :index
 

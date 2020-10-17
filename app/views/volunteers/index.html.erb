@@ -1,2 +1,23 @@
-<h1>Volunteers#index</h1>
-<p>Find me in app/views/volunteers/index.html.erb</p>
+<h2>Volunteers</h2>
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Phone number</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Is active</th>
+    <th>age</th>
+  </tr>
+  <% @volunteers.each do |v| %>
+    <tr>
+      <td><%= v.first_name.capitalize %></td>
+      <td><%= v.last_name.capitalize %></td>
+      <td><%= v.phone_number %></td>
+      <td><%= v.email %></td>
+      <td><%= v.address %></td>
+      <td><%= v.is_active ? "V" : "X"%></td>
+      <td><%= v.date_of_birth %></td>
+    </tr>
+  <% end %>
+</table>
