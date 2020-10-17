@@ -1,8 +1,29 @@
-<div>
-<h1>Dogs#index</h1>
-<%=@dogs %>
-  <%= flash[:error]%>
-  <%= flash[:success]%>
-</div>
+<h2>Dogs</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Breed</th>
+    <th>Size</th>
+    <th>Is vaccinated</th>
+    <th>Is fixed</th>
+    <th>Gender</th>
+    <th>Additional info</th>
+  </tr>
+  <% @dogs.each do |d| %>
+    <tr>
+      <td><%= d.name.capitalize %></td>
+      <td><%= d.date_of_birth %></td>
+      <td><%= @breeds[d.size_id].breed_name.capitalize %></td>
+      <td><%= @sizes[d.size_id].size_name.capitalize %></td>
+      <td><%= d.is_vaccinated ? "V" : "X"%></td>
+      <td><%= d.is_fixed ? "V" : "X" %></td>
+      <td><%= d.is_male ? "Male" : "Female" %></td>
+      <td><%= d.description %></td>
+    </tr>
+  <% end %>
+</table>
+
+
 
 

@@ -18,6 +18,13 @@
     </div>
   </div>
 
+<!--  <div class="formSection">-->
+<!--    <div class="formLabel">Breed:</div>-->
+<!--    <div>-->
+      <%#= form.collection_select(:breed_id, @breeds, :id, :breed_name, {prompt: true})%>
+<!--    </div>-->
+<!--  </div>-->
+
   <div class="formSection">
     <div class="formLabel">Gender:</div>
     <div>
@@ -30,14 +37,14 @@
 
   <div class="formSection">
     <div>
-      <%=form.check_box(:is_fixed) %>
+      <%=form.check_box(:is_fixed, {checked: false}) %>
       <%= form.label(:is_fixed) %>
     </div>
   </div>
 
   <div class="formSection">
     <div>
-      <%=form.check_box(:is_vaccinated) %>
+      <%=form.check_box(:is_vaccinated, {checked: false}) %>
       <%= form.label(:is_vaccinated) %>
     </div>
   </div>
