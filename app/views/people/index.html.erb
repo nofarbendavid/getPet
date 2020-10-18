@@ -1,2 +1,23 @@
-<h1>People#index</h1>
-<p>Find me in app/views/people/index.html.erb</p>
+<h2>People</h2>
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Phone number</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Is banned</th>
+    <th>age</th>
+  </tr>
+  <% @people.each do |p| %>
+    <tr>
+      <td><%= p.first_name.capitalize %></td>
+      <td><%= p.last_name.capitalize %></td>
+      <td><%= p.phone_number %></td>
+      <td><%= p.email %></td>
+      <td><%= p.address %></td>
+      <td><%= p.is_banned ? "V" : "X"%></td>
+      <td><%= p.date_of_birth %></td>
+    </tr>
+  <% end %>
+</table>
