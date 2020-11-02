@@ -1,8 +1,6 @@
 class DogsController < ApplicationController
   def index
     @dogs = Dog.all
-    @sizes = Size.all.with_order
-    @breeds = Breed.all
   end
 
   def new
@@ -53,7 +51,9 @@ class DogsController < ApplicationController
 
   private
   def permitted_params
-    params.require(:dog).permit(:name, :date_of_birth, :size_id, :is_male, :is_fixed, :is_vaccinated, :description)
+    params.require(:dog).permit :name, :date_of_birth, :size_id,
+                                :is_male, :is_fixed, :is_vaccinated,
+                                :description, breed_ids: []
   end
 
 end

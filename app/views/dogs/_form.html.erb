@@ -18,12 +18,12 @@
     </div>
   </div>
 
-<!--  <div class="formSection">-->
-<!--    <div class="formLabel">Breed:</div>-->
-<!--    <div>-->
-      <%#= form.collection_select(:breed_id, @breeds, :id, :breed_name, {prompt: true})%>
-<!--    </div>-->
-<!--  </div>-->
+  <div class="formSection">
+    <div class="formLabel">Breed:</div>
+    <div>
+      <%= form.collection_select(:breed_ids, @breeds, :id, :breed_name, {}, {multiple: true})%>
+    </div>
+  </div>
 
   <div class="formSection">
     <div class="formLabel">Gender:</div>

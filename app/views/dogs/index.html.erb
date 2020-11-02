@@ -13,9 +13,9 @@
   <% @dogs.each do |d| %>
     <tr>
       <td><%= d.name.capitalize %></td>
-      <td><%= d.date_of_birth %></td>
-      <td><%= @breeds[d.size_id].breed_name.capitalize %></td>
-      <td><%= @sizes[d.size_id].size_name.capitalize %></td>
+      <td><%= distance_of_time_in_words(d.date_of_birth, Time.now) unless d.date_of_birth.nil? %></td>
+      <td><%= d.breeds.map(&:breed_name).join(', ') %></td>
+      <td><%= d.size_name %></td>
       <td><%= d.is_vaccinated ? "V" : "X"%></td>
       <td><%= d.is_fixed ? "V" : "X" %></td>
       <td><%= d.is_male ? "Male" : "Female" %></td>
