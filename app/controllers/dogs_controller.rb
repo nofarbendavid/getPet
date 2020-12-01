@@ -9,17 +9,17 @@ class DogsController < ApplicationController
     @breeds = Breed.all
   end
 
-
   def create
     @dog = Dog.new(permitted_params)
+    @sizes = Size.all.with_order
+    @breeds = Breed.all
 
-    if @dog.save!
+    if @dog.save
       flash[:success] = @dog
       redirect_to controller: :dogs, action: :index
-
     else
       flash[:error] = @dog.errors
-      redirect_to controller: :dogs, action: :new
+      render :new
     end
   end
 
@@ -53,7 +53,8 @@ class DogsController < ApplicationController
   def permitted_params
     params.require(:dog).permit :name, :date_of_birth, :size_id,
                                 :is_male, :is_fixed, :is_vaccinated,
-                                :description, breed_ids: []
+                                :description, breed_ids: [],
+                                images: []
   end
 
 end

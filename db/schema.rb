@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_160933) do
+ActiveRecord::Schema.define(version: 2020_11_16_164916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "adoptions", force: :cascade do |t|
     t.date "start_date", null: false
@@ -66,14 +87,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_160933) do
     t.index ["volunteer_id"], name: "index_dogs_volunteers_on_volunteer_id"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.bigint "dog_id", null: false
-    t.string "image_url", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["dog_id"], name: "index_images_on_dog_id"
-  end
-
   create_table "people", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -104,6 +117,7 @@ ActiveRecord::Schema.define(version: 2020_09_27_160933) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "adoptions", "dogs"
   add_foreign_key "adoptions", "people"
   add_foreign_key "breeds_dogs", "breeds"
@@ -111,5 +125,4 @@ ActiveRecord::Schema.define(version: 2020_09_27_160933) do
   add_foreign_key "dogs", "sizes"
   add_foreign_key "dogs_volunteers", "dogs"
   add_foreign_key "dogs_volunteers", "volunteers"
-  add_foreign_key "images", "dogs"
 end
