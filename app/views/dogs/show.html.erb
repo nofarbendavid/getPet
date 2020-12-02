@@ -1,2 +1,18 @@
-<h1>Dogs#show</h1>
-<p>Find me in app/views/dogs/show.html.erb</p>
+
+<h1>
+<%=@dog.name %>
+</h1>
+
+<div>
+  <% @dog.images.each do |image|%>
+    <%= image_tag image, width: 200, height: 200 %>
+  <%end%>
+</div>
+
+<div>Gender: <%= @dog.is_male ? "Male" : "Female" %></div>
+<div>Size: <%=@dog.size_name %></div>
+<div>Age: <%= distance_of_time_in_words(@dog.date_of_birth, Time.now) unless @dog.date_of_birth.nil? %></div>
+<div>Breed: <%= @dog.breeds.map(&:breed_name).join(', ') %></div>
+<div><%= "Vaccinated" unless @dog.is_vaccinated.equal?(false) %></div>
+<div><%= "Fixed" unless @dog.is_fixed.equal?(false) %></div>
+<div>Description: <%=@dog.description %></div>

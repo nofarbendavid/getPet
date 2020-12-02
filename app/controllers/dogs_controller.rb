@@ -24,6 +24,7 @@ class DogsController < ApplicationController
   end
 
   def show
+    @dog = Dog.find(params[:id])
   end
 
   def edit
@@ -34,14 +35,17 @@ class DogsController < ApplicationController
 
   def update
     @dog = Dog.find(params[:id])
+    # without @sizes & @breeds will get in case of error
+    @sizes = Size.all.with_order
+    @breeds = Breed.all
 
-    if @dog.update!(permitted_params)
+    if @dog.update(permitted_params)
       flash[:success] = @dog
       redirect_to controller: :dogs, action: :index
 
     else
       flash[:error] = @dog.errors
-      redirect_to controller: :dogs, action: :edit
+      render :edit
     end
 
   end
