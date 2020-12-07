@@ -3,3 +3,4 @@
 /.idea
 /log
 /storage
+config/master.key
